@@ -105,7 +105,7 @@ class SimpleAssembler:
             if not line:
                 continue  # Skip empty or comment-only lines
             parts = line.split()
-            instruction = parts[0]
+            instruction = parts[0].upper()
             data = int(parts[1]) if len(parts) > 1 else 0
 
             if instruction not in SimpleAssembler.INSTRUCTIONS:

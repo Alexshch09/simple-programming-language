@@ -155,13 +155,6 @@ class SimpleIDE:
                         end_index = start_index + len(word)
                         self.code_editor.tag_add("data", f"{line_no}.0 + {start_index} chars", f"{line_no}.0 + {end_index} chars")
 
-                # Highlight addresses (RAM addresses) in the code part before '#'
-                for word in code_part.split():
-                    if word.startswith("RAM"):
-                        start_index = code_part.find(word)
-                        end_index = start_index + len(word)
-                        self.code_editor.tag_add("address", f"{line_no}.0 + {start_index} chars", f"{line_no}.0 + {end_index} chars")
-
             else:
                 # Highlight the whole line as code if there is no comment
                 code_part = line.strip()
@@ -220,13 +213,6 @@ class SimpleIDE:
                         start_index = code_part.find(word)
                         end_index = start_index + len(word)
                         self.code_editor.tag_add("data", f"{line_no}.0 + {start_index} chars", f"{line_no}.0 + {end_index} chars")
-
-                # Highlight addresses (RAM addresses) in the whole line
-                for word in code_part.split():
-                    if word.startswith("RAM"):
-                        start_index = code_part.find(word)
-                        end_index = start_index + len(word)
-                        self.code_editor.tag_add("address", f"{line_no}.0 + {start_index} chars", f"{line_no}.0 + {end_index} chars")
 
     def assemble_code(self):
         code = self.code_editor.get("1.0", tk.END).strip()
